@@ -7,9 +7,10 @@
   <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
   <link rel="stylesheet" href="js/leaflet/leaflet.css" />
-  <script src="js/geojson.js"></script>
+
   <script src="js/leaflet/leaflet.js"></script>
   <script src="js/leaflet-rastercoords/rastercoords.js"></script>
+  <script src="js/geojson.js"></script>
 <style>
   #map {
     position: absolute;
@@ -43,14 +44,37 @@
       // set the view on a marker ...
       map.setView(rc.unproject([22000, 15450]), 9)
 
-      // add layer control object
-      L.control.layers({}, {}).addTo(map)
-
       // the tile layer containing the image generated with gdal2tiles --leaflet ...
       L.tileLayer('./tiles/{z}/{x}/{y}.png', {
         noWrap: true,
-        attribution: ''
+        attribution: 'Creation Amelie DUVERNET aka Amelaye <a href="http://minetest.amelieonline.net">Projet Amelaye In Minerland</a>'
       }).addTo(map)
+
+      // Markers
+      var layerBounds = L.layerGroup([
+        L.marker(rc.unproject([22087, 15321])).bindPopup('Spawn Station'),
+      ])
+      map.addLayer(layerBounds)
+    }
+
+    function layerGeo (map, rc) {
+        var layerGeo = L.geoJson(window.geoInfo, {
+        // correctly map the geojson coordinates on the image
+        coordsToLatLng: function (coords) {
+          return rc.unproject(coords)
+        },
+        // add a popup content to the marker
+        onEachFeature: function (feature, layer) {
+          if (feature.properties && feature.properties.name) {
+            layer.bindPopup(feature.properties.name)
+          }
+        },
+        pointToLayer: function (feature, latlng) {
+          return L.marker(latlng, {})
+        }
+      })
+      map.addLayer(layerGeo)
+      return layerGeo
     }
 
     init('map')
