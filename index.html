@@ -6,8 +6,10 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
-  <link rel="stylesheet" href="leaflet/leaflet.css" />
-  <script src="leaflet/leaflet.js"></script>
+  <link rel="stylesheet" href="js/leaflet/leaflet.css" />
+  <script src="js/geojson.js"></script>
+  <script src="js/leaflet/leaflet.js"></script>
+  <script src="js/leaflet-rastercoords/rastercoords.js"></script>
 <style>
   #map {
     position: absolute;
@@ -19,42 +21,41 @@
 <div id="map"></div>
 
 <script>
-    var map = L.map('map').setView([0, 0], 5);
 
-    L.tileLayer('./tiles/{z}/{x}/{y}.png', {
-      crs: L.CRS.Simple,
-      center: new L.LatLng(0,0),
-      tms: true,
-      minZoom: 5,
-      maxZoom: 10,
-    }).addTo(map);
+  ;(function (window) {
+    function init (mapid) {
+      var minZoom = 0
+      var maxZoom = 9
+      var img = [
+        38192, // original width of image
+        29792  // original height of image
+      ]
 
+      // create the map
+      var map = L.map(mapid, {
+        minZoom: minZoom,
+        maxZoom: maxZoom
+      })
 
+      // assign map and image dimensions
+      var rc = new L.RasterCoords(map, img)
 
-//var map = L.map('map').setView([0, 0], 1);
-/*
-  var map = L.map('map', {
-    crs: L.CRS.Simple,
-    center: [500, 500],
-    scale: function (zoom) {
-      return Math.pow(2, zoom);
-    },
-    zoom: function (scale) {
-      return Math.log(scale / 256) / Math.LN2;
-    },
-  });
+      // set the view on a marker ...
+      map.setView(rc.unproject([22000, 15450]), 9)
 
-  var bounds = [[0,0], [2000,2000]];
-  var image = L.imageOverlay('map.png', bounds).addTo(map);
+      // add layer control object
+      L.control.layers({}, {}).addTo(map)
 
-  // Spawn
-  var spawn = L.latLng([971.5, 1156.5]);
-  L.marker(spawn).addTo(map).bindTooltip('Spawn Station', {sticky: false, direction: 'top'});
-  // Maison de Jym
-  var jymHome = L.latLng([972, 1137]);
-  L.marker(jymHome).addTo(map).bindTooltip('Maison de Jym', {sticky: false, direction: 'top'});
+      // the tile layer containing the image generated with gdal2tiles --leaflet ...
+      L.tileLayer('./tiles/{z}/{x}/{y}.png', {
+        noWrap: true,
+        attribution: ''
+      }).addTo(map)
+    }
 
-  map.setView( [971.5, 1156.5], 3);*/
+    init('map')
+  }(window))
+
 </script>
 
 
