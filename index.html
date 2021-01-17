@@ -13,8 +13,8 @@
   <script src="css/font-awesome/js/all.js"></script>
   <script src="js/leaflet.js"></script>
   <script src="js/rastercoords.js"></script>
-  <script src="js/geojson.js"></script>
   <script src="js/leaflet.extra-markers.min.js"></script>
+  <script src="js/geojson.js"></script>
 <style>
   #map {
     position: absolute;
@@ -34,41 +34,7 @@
 <script>
   ;(function (window) {
     function init (mapid) {
-      var minZoom = 0
-      var maxZoom = 9
-      var img = [
-        38192, // original width of image
-        29792  // original height of image
-      ]
-
-      // create the map
-      var map = L.map(mapid, {
-        minZoom: minZoom,
-        maxZoom: maxZoom
-      })
-
-      // assign map and image dimensions
-      var rc = new L.RasterCoords(map, img)
-
-      // set the view on a marker ...
-      map.setView(rc.unproject([22000, 15450]), 9)
-
-      /**
-       * layer with red markers
-       */
-      /*
       function layerGeo (map, rc) {
-        var imgDir = 'css/images/'
-        var redMarker = L.icon({
-          iconUrl: imgDir + 'marker-icon.png',
-          iconRetinaUrl: imgDir + 'marker-icon-2x.png',
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-          popupAnchor: [-0, -31],
-          shadowUrl: imgDir + 'marker-shadow.png',
-          shadowSize: [41, 41],
-          shadowAnchor: [14, 41]
-        })
         var layerGeo = L.geoJson(window.geoInfo, {
           // correctly map the geojson coordinates on the image
           coordsToLatLng: function (coords) {
@@ -82,119 +48,60 @@
           },
           pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {
-              icon: redMarker
+              icon: feature.properties.id
             })
           }
         })
         map.addLayer(layerGeo)
         return layerGeo
       }
-*/
-      // add layer control object
+
+      function layerBounds (map, rc, img) {
+        // set marker at the image bound edges
+        var layerBounds = L.layerGroup([
+          L.marker(rc.unproject([0, 0])).bindPopup('[0,0]'),
+          L.marker(rc.unproject(img)).bindPopup(JSON.stringify(img))
+        ])
+        map.addLayer(layerBounds)
+
+        // set markers on click events in the map
+        map.on('click', function (event) {
+          // to obtain raster coordinates from the map use `project`
+          var coord = rc.project(event.latlng)
+          // to set a marker, ... in raster coordinates in the map use `unproject`
+          var marker = L.marker(rc.unproject(coord))
+                  .addTo(layerBounds)
+          marker.bindPopup('[' + Math.floor(coord.x) + ',' + Math.floor(coord.y) + ']')
+                  .openPopup()
+        })
+
+        return layerBounds
+      }
+
+      var minZoom = 0
+      var maxZoom = 9
+      var img = [
+        38192, // original width of image
+        29792  // original height of image
+      ]
+
+      // create the map
+      var map = L.map(mapid, {
+        minZoom: minZoom,
+        maxZoom: maxZoom
+      })
+
+      var rc = new L.RasterCoords(map, img)
+      map.setView(rc.unproject([22000, 15450]), 9)
       L.control.layers({}, {
         //'Bounds': layerBounds(map, rc, img)
-        //'Info': layerGeo(map, rc)
+        'Info': layerGeo(map, rc)
       }).addTo(map)
-      // the tile layer containing the image generated with gdal2tiles --leaflet ...
+
       L.tileLayer('./tiles/{z}/{x}/{y}.png', {
         noWrap: true,
         attribution: 'Creation Amelie DUVERNET aka Amelaye <a href="http://minetest.amelieonline.net">Projet Amelaye In Minerland</a>'
       }).addTo(map)
-
-      // Markers
-      var spawnStation = L.ExtraMarkers.icon({
-        icon: 'fa-anchor',
-        markerColor: 'red',
-        shape: 'star',
-        prefix: 'fa'
-      });
-
-      var archeoSite = L.ExtraMarkers.icon({
-        icon: 'fa-landmark',
-        markerColor: 'cyan',
-        shape: 'square',
-        prefix: 'fa'
-      });
-
-      var metroStation = L.ExtraMarkers.icon({
-        icon: 'fa-subway',
-        markerColor: 'blue',
-        shape: 'circle',
-        prefix: 'fa'
-      });
-
-      var house = L.ExtraMarkers.icon({
-        icon: 'fa-home',
-        markerColor: 'violet',
-        shape: 'square',
-        prefix: 'fa'
-      });
-
-      var castle = L.ExtraMarkers.icon({
-        icon: 'fa-dungeon',
-        markerColor: 'violet',
-        shape: 'square',
-        prefix: 'fa'
-      });
-
-      var building = L.ExtraMarkers.icon({
-        icon: 'fa-building',
-        markerColor: 'orange',
-        shape: 'square',
-        prefix: 'fa'
-      });
-
-      var industrial = L.ExtraMarkers.icon({
-        icon: 'fa-industry',
-        markerColor: 'orange',
-        shape: 'square',
-        prefix: 'fa'
-      });
-
-      var layerMarks = L.layerGroup([
-        L.marker(rc.unproject([22087, 15321]), {icon: spawnStation}).bindPopup('Spawn Station'),
-        L.marker(rc.unproject([21581, 6327]), {icon: archeoSite}).bindPopup('Site archéologique'),
-        L.marker(rc.unproject([21536,15081]), {icon: house}).bindPopup('Maisons Mikabrak et Cloud'),
-        L.marker(rc.unproject([21714,15305]), {icon: house}).bindPopup('Chez Jym'),
-        L.marker(rc.unproject([20372,6946]), {icon: house}).bindPopup('Maison YYZ "Loin de tout"'),
-        L.marker(rc.unproject([19222,5831]), {icon: industrial}).bindPopup('Garage YYZ'),
-        L.marker(rc.unproject([22006,15538]), {icon: building}).bindPopup('Forum'),
-        L.marker(rc.unproject([21807,15415]), {icon: house}).bindPopup('Tour YYZ'),
-        L.marker(rc.unproject([23006,15916]), {icon: house}).bindPopup('Chez Nathy & Lili'),
-        L.marker(rc.unproject([22223,15290]), {icon: metroStation}).bindPopup('St. Chateau Royal'),
-        L.marker(rc.unproject([21989,15317]), {icon: metroStation}).bindPopup('St. Place de l\'église'),
-        L.marker(rc.unproject([21887,15451]), {icon: metroStation}).bindPopup('St. Mansion Hill'),
-        L.marker(rc.unproject([22286,15378]), {icon: metroStation}).bindPopup('St. Phare'),
-        L.marker(rc.unproject([21890,15284]), {icon: house}).bindPopup('Cabane de Guillaume'),
-        L.marker(rc.unproject([22088,14112]), {icon: castle}).bindPopup('Chateau dans le ciel'),
-
-      ])
-      map.addLayer(layerMarks)
-    }
-
-    /**
-     * layer with markers
-     */
-    function layerBounds (map, rc, img) {
-      // set marker at the image bound edges
-      var layerBounds = L.layerGroup([
-        L.marker(rc.unproject([0, 0])).bindPopup('[0,0]'),
-        L.marker(rc.unproject(img)).bindPopup(JSON.stringify(img))
-      ])
-      map.addLayer(layerBounds)
-
-      // set markers on click events in the map
-      map.on('click', function (event) {
-        // to obtain raster coordinates from the map use `project`
-        var coord = rc.project(event.latlng)
-        // to set a marker, ... in raster coordinates in the map use `unproject`
-        var marker = L.marker(rc.unproject(coord))
-                .addTo(layerBounds)
-        marker.bindPopup('[' + Math.floor(coord.x) + ',' + Math.floor(coord.y) + ']')
-                .openPopup()
-      })
-
-      return layerBounds
     }
 
     init('map')
