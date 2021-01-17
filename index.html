@@ -53,9 +53,47 @@
       // set the view on a marker ...
       map.setView(rc.unproject([22000, 15450]), 9)
 
+      /**
+       * layer with red markers
+       */
+      /*
+      function layerGeo (map, rc) {
+        var imgDir = 'css/images/'
+        var redMarker = L.icon({
+          iconUrl: imgDir + 'marker-icon.png',
+          iconRetinaUrl: imgDir + 'marker-icon-2x.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [-0, -31],
+          shadowUrl: imgDir + 'marker-shadow.png',
+          shadowSize: [41, 41],
+          shadowAnchor: [14, 41]
+        })
+        var layerGeo = L.geoJson(window.geoInfo, {
+          // correctly map the geojson coordinates on the image
+          coordsToLatLng: function (coords) {
+            return rc.unproject(coords)
+          },
+          // add a popup content to the marker
+          onEachFeature: function (feature, layer) {
+            if (feature.properties && feature.properties.name) {
+              layer.bindPopup(feature.properties.name)
+            }
+          },
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: redMarker
+            })
+          }
+        })
+        map.addLayer(layerGeo)
+        return layerGeo
+      }
+*/
       // add layer control object
       L.control.layers({}, {
         //'Bounds': layerBounds(map, rc, img)
+        //'Info': layerGeo(map, rc)
       }).addTo(map)
       // the tile layer containing the image generated with gdal2tiles --leaflet ...
       L.tileLayer('./tiles/{z}/{x}/{y}.png', {
@@ -64,31 +102,71 @@
       }).addTo(map)
 
       // Markers
-
-      // Creates a red marker with the coffee icon
       var spawnStation = L.ExtraMarkers.icon({
         icon: 'fa-anchor',
         markerColor: 'red',
+        shape: 'star',
+        prefix: 'fa'
+      });
+
+      var archeoSite = L.ExtraMarkers.icon({
+        icon: 'fa-landmark',
+        markerColor: 'cyan',
+        shape: 'square',
+        prefix: 'fa'
+      });
+
+      var metroStation = L.ExtraMarkers.icon({
+        icon: 'fa-subway',
+        markerColor: 'blue',
+        shape: 'circle',
+        prefix: 'fa'
+      });
+
+      var house = L.ExtraMarkers.icon({
+        icon: 'fa-home',
+        markerColor: 'violet',
+        shape: 'square',
+        prefix: 'fa'
+      });
+
+      var castle = L.ExtraMarkers.icon({
+        icon: 'fa-dungeon',
+        markerColor: 'violet',
+        shape: 'square',
+        prefix: 'fa'
+      });
+
+      var building = L.ExtraMarkers.icon({
+        icon: 'fa-building',
+        markerColor: 'orange',
+        shape: 'square',
+        prefix: 'fa'
+      });
+
+      var industrial = L.ExtraMarkers.icon({
+        icon: 'fa-industry',
+        markerColor: 'orange',
         shape: 'square',
         prefix: 'fa'
       });
 
       var layerMarks = L.layerGroup([
         L.marker(rc.unproject([22087, 15321]), {icon: spawnStation}).bindPopup('Spawn Station'),
-        L.marker(rc.unproject([21581, 6327])).bindPopup('Site archéologique'),
-        L.marker(rc.unproject([21536,15081])).bindPopup('Maisons Mikabrak et Cloud'),
-        L.marker(rc.unproject([21714,15305])).bindPopup('Chez Jym'),
-        L.marker(rc.unproject([20372,6946])).bindPopup('Maison YYZ "Loin de tout"'),
-        L.marker(rc.unproject([19222,5831])).bindPopup('Garage YYZ'),
-        L.marker(rc.unproject([21986,15537])).bindPopup('Forum'),
-        L.marker(rc.unproject([21807,15415])).bindPopup('Tour YYZ'),
-        L.marker(rc.unproject([23006,15916])).bindPopup('Chez Nathy & Lili'),
-        L.marker(rc.unproject([22223,15290])).bindPopup('St. Chateau Royal'),
-        L.marker(rc.unproject([21989,15317])).bindPopup('St. Place de l\'église'),
-        L.marker(rc.unproject([21887,15451])).bindPopup('St. Mansion Hill'),
-        L.marker(rc.unproject([22286,15378])).bindPopup('St. Phare'),
-        L.marker(rc.unproject([21890,15284])).bindPopup('Cabane de Guillaume'),
-        L.marker(rc.unproject([22088,14112])).bindPopup('Chateau dans le ciel'),
+        L.marker(rc.unproject([21581, 6327]), {icon: archeoSite}).bindPopup('Site archéologique'),
+        L.marker(rc.unproject([21536,15081]), {icon: house}).bindPopup('Maisons Mikabrak et Cloud'),
+        L.marker(rc.unproject([21714,15305]), {icon: house}).bindPopup('Chez Jym'),
+        L.marker(rc.unproject([20372,6946]), {icon: house}).bindPopup('Maison YYZ "Loin de tout"'),
+        L.marker(rc.unproject([19222,5831]), {icon: industrial}).bindPopup('Garage YYZ'),
+        L.marker(rc.unproject([22006,15538]), {icon: building}).bindPopup('Forum'),
+        L.marker(rc.unproject([21807,15415]), {icon: house}).bindPopup('Tour YYZ'),
+        L.marker(rc.unproject([23006,15916]), {icon: house}).bindPopup('Chez Nathy & Lili'),
+        L.marker(rc.unproject([22223,15290]), {icon: metroStation}).bindPopup('St. Chateau Royal'),
+        L.marker(rc.unproject([21989,15317]), {icon: metroStation}).bindPopup('St. Place de l\'église'),
+        L.marker(rc.unproject([21887,15451]), {icon: metroStation}).bindPopup('St. Mansion Hill'),
+        L.marker(rc.unproject([22286,15378]), {icon: metroStation}).bindPopup('St. Phare'),
+        L.marker(rc.unproject([21890,15284]), {icon: house}).bindPopup('Cabane de Guillaume'),
+        L.marker(rc.unproject([22088,14112]), {icon: castle}).bindPopup('Chateau dans le ciel'),
 
       ])
       map.addLayer(layerMarks)
