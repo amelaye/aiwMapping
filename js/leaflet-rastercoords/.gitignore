@@ -1,7 +1,0 @@
-bower_components/
-node_modules/
-example/tiles
-example/gdal2tiles.py
-tmp/
-*.log
-*.tgz
