@@ -14,7 +14,13 @@
 <style>
   #map {
     position: absolute;
-    top:0; bottom: 0; left: 0; right: 0;width:100%;height:100%}
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width:100%;
+    height:100%
+  }
 </style>
 </head>
 <body>
@@ -44,6 +50,11 @@
       // set the view on a marker ...
       map.setView(rc.unproject([22000, 15450]), 9)
 
+      // add layer control object
+      L.control.layers({}, {
+        //'Bounds': layerBounds(map, rc, img)
+      }).addTo(map)
+
       // the tile layer containing the image generated with gdal2tiles --leaflet ...
       L.tileLayer('./tiles/{z}/{x}/{y}.png', {
         noWrap: true,
@@ -51,30 +62,50 @@
       }).addTo(map)
 
       // Markers
-      var layerBounds = L.layerGroup([
+      var layerMarks = L.layerGroup([
         L.marker(rc.unproject([22087, 15321])).bindPopup('Spawn Station'),
+        L.marker(rc.unproject([21581, 6327])).bindPopup('Site archéologique'),
+        L.marker(rc.unproject([21536,15081])).bindPopup('Maisons Mikabrak et Cloud'),
+        L.marker(rc.unproject([21714,15305])).bindPopup('Chez Jym'),
+        L.marker(rc.unproject([20372,6946])).bindPopup('Maison YYZ "Loin de tout"'),
+        L.marker(rc.unproject([19222,5831])).bindPopup('Garage YYZ'),
+        L.marker(rc.unproject([21986,15537])).bindPopup('Forum'),
+        L.marker(rc.unproject([21807,15415])).bindPopup('Tour YYZ'),
+        L.marker(rc.unproject([23006,15916])).bindPopup('Chez Nathy & Lili'),
+        L.marker(rc.unproject([22223,15290])).bindPopup('St. Chateau Royal'),
+        L.marker(rc.unproject([21989,15317])).bindPopup('St. Place de l\'église'),
+        L.marker(rc.unproject([21887,15451])).bindPopup('St. Mansion Hill'),
+        L.marker(rc.unproject([22286,15378])).bindPopup('St. Phare'),
+        L.marker(rc.unproject([21890,15284])).bindPopup('Cabane de Guillaume'),
+        L.marker(rc.unproject([22088,14112])).bindPopup('Chateau dans le ciel'),
+
       ])
-      map.addLayer(layerBounds)
+      map.addLayer(layerMarks)
     }
 
-    function layerGeo (map, rc) {
-        var layerGeo = L.geoJson(window.geoInfo, {
-        // correctly map the geojson coordinates on the image
-        coordsToLatLng: function (coords) {
-          return rc.unproject(coords)
-        },
-        // add a popup content to the marker
-        onEachFeature: function (feature, layer) {
-          if (feature.properties && feature.properties.name) {
-            layer.bindPopup(feature.properties.name)
-          }
-        },
-        pointToLayer: function (feature, latlng) {
-          return L.marker(latlng, {})
-        }
+    /**
+     * layer with markers
+     */
+    function layerBounds (map, rc, img) {
+      // set marker at the image bound edges
+      var layerBounds = L.layerGroup([
+        L.marker(rc.unproject([0, 0])).bindPopup('[0,0]'),
+        L.marker(rc.unproject(img)).bindPopup(JSON.stringify(img))
+      ])
+      map.addLayer(layerBounds)
+
+      // set markers on click events in the map
+      map.on('click', function (event) {
+        // to obtain raster coordinates from the map use `project`
+        var coord = rc.project(event.latlng)
+        // to set a marker, ... in raster coordinates in the map use `unproject`
+        var marker = L.marker(rc.unproject(coord))
+                .addTo(layerBounds)
+        marker.bindPopup('[' + Math.floor(coord.x) + ',' + Math.floor(coord.y) + ']')
+                .openPopup()
       })
-      map.addLayer(layerGeo)
-      return layerGeo
+
+      return layerBounds
     }
 
     init('map')
