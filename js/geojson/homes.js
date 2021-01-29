@@ -1,12 +1,5 @@
 ;(function (window) {
     // Markers
-    var spawnStation = L.ExtraMarkers.icon({
-        icon: 'fa-anchor',
-        markerColor: 'red',
-        shape: 'star',
-        prefix: 'fa'
-    });
-
     var house = L.ExtraMarkers.icon({
         icon: 'fa-home',
         markerColor: 'violet',
@@ -23,17 +16,6 @@
 
     // geoJson definitions
     window.geoInfoHomes = [
-        {
-            'type': 'Feature',
-            'properties': {
-                'name': 'Spawn Station',
-                'id': spawnStation
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [8999,10456]
-            }
-        },
         // Castles
         {
             'type': 'Feature',

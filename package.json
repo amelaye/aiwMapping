@@ -9,6 +9,7 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "leaflet": "^1.7.1",
     "leaflet-extra-markers": "^1.2.1",
-    "leaflet-rastercoords": "^1.0.3"
+    "leaflet-rastercoords": "^1.0.3",
+    "leaflet-search": "^2.9.9"
   }
 }
