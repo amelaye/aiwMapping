@@ -1,0 +1,13 @@
+{
+  "homepage": "http://minetest.amelieonline.net",
+  "author": {
+    "name": "Amelie DUVERNET",
+    "email": "amelieonline@gmail.com",
+    "url": "http://www.amelieonline.net"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "leaflet": "^1.7.1",
+    "leaflet-extra-markers": "^1.2.1"
+  }
+}

@@ -2,3 +2,6 @@
 /gdal2tiles-leaflet/
 /tiles/*/*/*.png
 /tiles/*.xml
+*.log
+*.lock
+node_modules/*
