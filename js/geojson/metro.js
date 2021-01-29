@@ -6,7 +6,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Chateau Royal',
-                'icon': 'fa-subway'
+                'icon': 'fa-subway',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -17,7 +19,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Place de l\'église',
-                'icon': 'fa-subway'
+                'icon': 'fa-subway',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -28,7 +32,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Mansion Hill',
-                'icon': 'fa-subway'
+                'icon': 'fa-subway',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -39,7 +45,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Phare',
-                'icon': 'fa-subway'
+                'icon': 'fa-subway',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',

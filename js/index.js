@@ -1,15 +1,3 @@
-// Examples sur linuxforks pour le geojson (à s'inspirer)
-/*load_geojson("Cities", "./geojson/cities.json", "city", "red");
-load_geojson("Stations", "./geojson/stations.json", "train", "blue");
-load_geojson("Shops", "./geojson/shops.json", "shopping-cart", "green");
-load_geojson("Parks", "./geojson/parks.json", "tree", "darkgreen");
-load_geojson("Libraries", "./geojson/libraries.json", "book-open", "darkblue");
-load_geojson("CW Complexes", "./geojson/cw_complexes.json", "border-all", "black");
-load_geojson("Courts", "./geojson/courts.json", "balance-scale", "black");
-load_geojson("Waterway", "./geojson/waterway.json", "water", "darkblue");
-load_geojson("Train Depots", "./geojson/depots.json", "wrench", "violet");
-load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
-
 ;(function (window) {
     function init (mapid) {
         function layerGeoGlobal(coords, map, rc, color, shape, prefix) {
@@ -21,12 +9,16 @@ load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
                 // add a popup content to the marker
                 onEachFeature: function (feature, layer) {
                     if (feature.properties && feature.properties.name) {
-                        layer.bindPopup(feature.properties.name)
+                        let myDiv = '<h3><a href="'+feature.properties.link+'" target="blank_">'+feature.properties.name+'</a></h3>';
+                        myDiv += '<img src="'+feature.properties.image+'" style="max-width:300px;"/><br />';
+                        myDiv += feature.properties.description;
+
+                        layer.bindPopup(myDiv)
                     }
                 },
                 pointToLayer: function (feature, latlng) {
-                    var propertIcon = feature.properties.icon;
-                    var myMarker = L.ExtraMarkers.icon({
+                    let propertIcon = feature.properties.icon;
+                    let myMarker = L.ExtraMarkers.icon({
                         icon: propertIcon,
                         markerColor: color,
                         shape: shape,

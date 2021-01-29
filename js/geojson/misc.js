@@ -6,7 +6,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Forum',
-                'icon': 'fa-building'
+                'icon': 'fa-building',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -17,7 +19,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Site archéologique',
-                'icon': 'fa-landmark'
+                'icon': 'fa-landmark',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -28,7 +32,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Garage YYZ',
-                'icon': 'fa-industry'
+                'icon': 'fa-industry',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -39,7 +45,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Minoterie',
-                'icon': 'fa-industry'
+                'icon': 'fa-industry',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',

@@ -6,7 +6,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chateau dans le ciel',
-                'icon': 'fa-dungeon'
+                'icon': 'fa-dungeon',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -17,7 +19,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chateau Royal',
-                'icon': 'fa-dungeon'
+                'icon': 'fa-dungeon',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -28,7 +32,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chateau Amelaye',
-                'icon': 'fa-dungeon'
+                'icon': 'fa-dungeon',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -40,7 +46,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Cottage',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -51,7 +59,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Tour YYZ',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -62,7 +72,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Maison YYZ "Loin de tout"',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -73,7 +85,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Jym',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -84,7 +98,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Mikabrak',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -95,7 +111,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Cloud',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -106,7 +124,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Nathy & Lili',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -117,7 +137,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Cabane de Guillaume',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -128,7 +150,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Maison de Baobab',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -139,7 +163,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Bledar',
-                'icon': 'fa-home'
+                'icon': 'fa-home',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',

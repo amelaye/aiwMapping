@@ -5,7 +5,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Spawn Station',
-                'icon': 'fa-anchor'
+                'icon': 'fa-anchor',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',

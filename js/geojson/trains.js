@@ -5,7 +5,10 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Gare du Zoo',
-                'icon': 'fa-train'
+                'link': 'http://minetest.amelieonline.net/doku.php?id=train:zoo',
+                'icon': 'fa-train',
+                'image': 'http://minetest.amelieonline.net/lib/exe/fetch.php?w=600&tok=24c205&media=screenshot_20210110_184336.png',
+                'description': 'Permet de prendre le petit train du Zoo.<br>C\'est un trajet relativement court qui attend le visiteur mais qui vaut le coup ! '
             },
             'geometry': {
                 'type': 'Point',
@@ -16,7 +19,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Site archéologique',
-                'icon': 'fa-train'
+                'icon': 'fa-train',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
@@ -27,7 +32,9 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Gare Centrale',
-                'icon': 'fa-train'
+                'icon': 'fa-train',
+                'image': '',
+                'description': ''
             },
             'geometry': {
                 'type': 'Point',
