@@ -1,12 +1,4 @@
 ;(function (window) {
-    // Markers
-    var metroStation = L.ExtraMarkers.icon({
-        icon: 'fa-subway',
-        markerColor: 'blue',
-        shape: 'circle',
-        prefix: 'fa'
-    });
-
     // geoJson definitions
     window.geoInfoMetro = [
         // Trains
@@ -14,7 +6,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Chateau Royal',
-                'id': metroStation
+                'icon': 'fa-subway'
             },
             'geometry': {
                 'type': 'Point',
@@ -25,7 +17,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Place de l\'église',
-                'id': metroStation
+                'icon': 'fa-subway'
             },
             'geometry': {
                 'type': 'Point',
@@ -36,7 +28,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Mansion Hill',
-                'id': metroStation
+                'icon': 'fa-subway'
             },
             'geometry': {
                 'type': 'Point',
@@ -47,7 +39,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'St. Phare',
-                'id': metroStation
+                'icon': 'fa-subway'
             },
             'geometry': {
                 'type': 'Point',

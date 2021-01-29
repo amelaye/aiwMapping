@@ -1,26 +1,4 @@
 ;(function (window) {
-    // Markers
-    var archeoSite = L.ExtraMarkers.icon({
-        icon: 'fa-landmark',
-        markerColor: 'orange',
-        shape: 'square',
-        prefix: 'fa'
-    });
-
-    var building = L.ExtraMarkers.icon({
-        icon: 'fa-building',
-        markerColor: 'orange',
-        shape: 'square',
-        prefix: 'fa'
-    });
-
-    var industrial = L.ExtraMarkers.icon({
-        icon: 'fa-industry',
-        markerColor: 'orange',
-        shape: 'square',
-        prefix: 'fa'
-    });
-
     // geoJson definitions
     window.geoInfoMisc = [
         // Misc
@@ -28,7 +6,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Forum',
-                'id': building
+                'icon': 'fa-building'
             },
             'geometry': {
                 'type': 'Point',
@@ -39,7 +17,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Site archéologique',
-                'id': archeoSite
+                'icon': 'fa-landmark'
             },
             'geometry': {
                 'type': 'Point',
@@ -50,7 +28,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Garage YYZ',
-                'id': industrial
+                'icon': 'fa-industry'
             },
             'geometry': {
                 'type': 'Point',
@@ -61,7 +39,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Minoterie',
-                'id': industrial
+                'icon': 'fa-industry'
             },
             'geometry': {
                 'type': 'Point',

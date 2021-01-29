@@ -1,19 +1,11 @@
 ;(function (window) {
-    // Markers
-    var trainStation = L.ExtraMarkers.icon({
-        icon: 'fa-train',
-        markerColor: 'cyan',
-        shape: 'square',
-        prefix: 'fa'
-    });
-
     // geoJson definitions
     window.geoInfoTrains = [
         {
             'type': 'Feature',
             'properties': {
                 'name': 'Gare du Zoo',
-                'id': trainStation
+                'icon': 'fa-train'
             },
             'geometry': {
                 'type': 'Point',
@@ -24,7 +16,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Site archéologique',
-                'id': trainStation
+                'icon': 'fa-train'
             },
             'geometry': {
                 'type': 'Point',
@@ -35,7 +27,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Gare Centrale',
-                'id': trainStation
+                'icon': 'fa-train'
             },
             'geometry': {
                 'type': 'Point',

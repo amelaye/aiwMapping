@@ -12,7 +12,7 @@ load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
 
 ;(function (window) {
     function init (mapid) {
-        function layerGeoGlobal(coords, map, rc) {
+        function layerGeoGlobal(coords, map, rc, color, shape, prefix) {
             var layerGeo = L.geoJson(coords, {
                 // correctly map the geojson coordinates on the image
                 coordsToLatLng: function (coords) {
@@ -25,8 +25,15 @@ load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
                     }
                 },
                 pointToLayer: function (feature, latlng) {
+                    var propertIcon = feature.properties.icon;
+                    var myMarker = L.ExtraMarkers.icon({
+                        icon: propertIcon,
+                        markerColor: color,
+                        shape: shape,
+                        prefix: prefix
+                    })
                     return L.marker(latlng, {
-                        icon: feature.properties.id
+                        icon: myMarker
                     })
                 }
             })
@@ -72,13 +79,13 @@ load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
         var rc = new L.RasterCoords(map, img)
         map.setView(rc.unproject([9000, 10554]), 7)
         L.control.layers({
-            'Spawn': layerGeoGlobal(window.geoInfoSpawn, map, rc),
+            'Spawn': layerGeoGlobal(window.geoInfoSpawn, map, rc, 'red', 'star', 'fa'),
         }, {
             'Bounds': layerBounds(map, rc, img),
-            'Homes': layerGeoGlobal(window.geoInfoHomes, map, rc),
-            'Metro': layerGeoGlobal(window.geoInfoMetro, map, rc),
-            'Train stations': layerGeoGlobal(window.geoInfoTrains, map, rc),
-            'Misc': layerGeoGlobal(window.geoInfoMisc, map, rc),
+            'Homes': layerGeoGlobal(window.geoInfoHomes, map, rc, 'violet', 'square', 'fa'),
+            'Metro': layerGeoGlobal(window.geoInfoMetro, map, rc, 'blue', 'circle', 'fa'),
+            'Train stations': layerGeoGlobal(window.geoInfoTrains, map, rc, 'cyan', 'square', 'fa'),
+            'Misc': layerGeoGlobal(window.geoInfoMisc, map, rc, 'orange', 'square', 'fa'),
         }).addTo(map)
 
         L.tileLayer('./tiles/{z}/{x}/{y}.png', {

@@ -1,19 +1,4 @@
 ;(function (window) {
-    // Markers
-    var house = L.ExtraMarkers.icon({
-        icon: 'fa-home',
-        markerColor: 'violet',
-        shape: 'square',
-        prefix: 'fa'
-    });
-
-    var castle = L.ExtraMarkers.icon({
-        icon: 'fa-dungeon',
-        markerColor: 'violet',
-        shape: 'square',
-        prefix: 'fa'
-    });
-
     // geoJson definitions
     window.geoInfoHomes = [
         // Castles
@@ -21,7 +6,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chateau dans le ciel',
-                'id': castle
+                'icon': 'fa-dungeon'
             },
             'geometry': {
                 'type': 'Point',
@@ -32,7 +17,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chateau Royal',
-                'id': castle
+                'icon': 'fa-dungeon'
             },
             'geometry': {
                 'type': 'Point',
@@ -43,7 +28,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chateau Amelaye',
-                'id': castle
+                'icon': 'fa-dungeon'
             },
             'geometry': {
                 'type': 'Point',
@@ -55,7 +40,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Cottage',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -66,7 +51,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Tour YYZ',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -77,7 +62,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Maison YYZ "Loin de tout"',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -88,7 +73,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Jym',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -99,7 +84,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Mikabrak',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -110,7 +95,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Cloud',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -121,7 +106,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Nathy & Lili',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -132,7 +117,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Cabane de Guillaume',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -143,7 +128,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Maison de Baobab',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',
@@ -154,7 +139,7 @@
             'type': 'Feature',
             'properties': {
                 'name': 'Chez Bledar',
-                'id': house
+                'icon': 'fa-home'
             },
             'geometry': {
                 'type': 'Point',

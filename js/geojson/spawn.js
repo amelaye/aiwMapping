@@ -1,19 +1,11 @@
 ;(function (window) {
-    // Markers
-    var spawnStation = L.ExtraMarkers.icon({
-        icon: 'fa-anchor',
-        markerColor: 'red',
-        shape: 'star',
-        prefix: 'fa'
-    });
-
     // geoJson definitions
     window.geoInfoSpawn = [
         {
             'type': 'Feature',
             'properties': {
                 'name': 'Spawn Station',
-                'id': spawnStation
+                'icon': 'fa-anchor'
             },
             'geometry': {
                 'type': 'Point',
