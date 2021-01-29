@@ -21,6 +21,13 @@
         prefix: 'fa'
     });
 
+    var trainStation = L.ExtraMarkers.icon({
+        icon: 'fa-train',
+        markerColor: 'cyan',
+        shape: 'square',
+        prefix: 'fa'
+    });
+
     var house = L.ExtraMarkers.icon({
         icon: 'fa-home',
         markerColor: 'violet',
@@ -59,7 +66,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [22087, 15321]
+                'coordinates': [8999,10456]
             }
         },
         // Castles
@@ -71,10 +78,43 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [22088,14112]
+                'coordinates': [9002,9234]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Chateau Royal',
+                'id': castle
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [9138,10437]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Chateau Amelaye',
+                'id': castle
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8973,10536]
             }
         },
         // Homes
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Cottage',
+                'id': house
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [9080,10563]
+            }
+        },
         {
             'type': 'Feature',
             'properties': {
@@ -83,7 +123,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21807,15415]
+                'coordinates': [8720,10547]
             }
         },
         {
@@ -94,7 +134,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [20372,6946]
+                'coordinates': [7280,2087]
             }
         },
         {
@@ -105,18 +145,29 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21714,15305]
+                'coordinates': [8624,10445]
             }
         },
         {
             'type': 'Feature',
             'properties': {
-                'name': 'Maisons Mikabrak et Cloud',
+                'name': 'Chez Mikabrak',
                 'id': house
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21536,15081]
+                'coordinates': [8464,10217]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Chez Cloud',
+                'id': house
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8371,10188]
             }
         },
         {
@@ -127,7 +178,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [23006,15916]
+                'coordinates': [9912,11037]
             }
         },
         {
@@ -138,7 +189,29 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21890,15284]
+                'coordinates': [8804,10424]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Maison de Baobab',
+                'id': house
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [9352,10552]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Chez Bledar',
+                'id': house
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [9106,10242]
             }
         },
         // Trains
@@ -150,7 +223,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [22223,15290]
+                'coordinates': [9148,10407]
             }
         },
         {
@@ -161,7 +234,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21989,15317]
+                'coordinates': [8873,10480]
             }
         },
         {
@@ -172,7 +245,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21887,15451]
+                'coordinates': [8794,10588]
             }
         },
         {
@@ -183,7 +256,40 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [22286,15378]
+                'coordinates': [9196,10514]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Gare du Zoo',
+                'id': trainStation
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8897,10610]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Site archéologique',
+                'id': trainStation
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8533,1486]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Gare Centrale',
+                'id': trainStation
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8865,10739]
             }
         },
         // Misc
@@ -195,7 +301,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [22006,15538]
+                'coordinates': [8894,10673]
             }
         },
         {
@@ -206,7 +312,7 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [21581, 6327]
+                'coordinates': [8494,1499]
             }
         },
         {
@@ -217,7 +323,18 @@
             },
             'geometry': {
                 'type': 'Point',
-                'coordinates': [19222,5831]
+                'coordinates': [6088,980]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Minoterie',
+                'id': industrial
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8760,10804]
             }
         },
     ]

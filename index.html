@@ -81,8 +81,8 @@
       var minZoom = 0
       var maxZoom = 9
       var img = [
-        38192, // original width of image
-        29792  // original height of image
+        20000, // original width of image
+        20000  // original height of image
       ]
 
       // create the map
@@ -92,9 +92,9 @@
       })
 
       var rc = new L.RasterCoords(map, img)
-      map.setView(rc.unproject([22000, 15450]), 9)
+      map.setView(rc.unproject([9000, 10554]), 7)
       L.control.layers({}, {
-        //'Bounds': layerBounds(map, rc, img)
+        'Bounds': layerBounds(map, rc, img),
         'Info': layerGeo(map, rc)
       }).addTo(map)
 
