@@ -13,5 +13,7 @@ Hi ! This is my customizable mapping for Minetest.
 <code>
 ./gdal2tiles.py -l -p raster -z 0-10 -w none <your map path> ../tiles
 </code> and wait ...
+   
 5. Change your map size in js/index.js
+   
 6. Change the coords in the js/geojson files

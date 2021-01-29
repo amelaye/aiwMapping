@@ -13,33 +13,7 @@ load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
 ;(function (window) {
     function init (mapid) {
         function layerGeoGlobal(coords, map, rc) {
-            //@todo
-        }
-
-        function layerGeoHomes (map, rc) {
-            var layerGeo = L.geoJson(window.geoInfoHomes, {
-                // correctly map the geojson coordinates on the image
-                coordsToLatLng: function (coords) {
-                    return rc.unproject(coords)
-                },
-                // add a popup content to the marker
-                onEachFeature: function (feature, layer) {
-                    if (feature.properties && feature.properties.name) {
-                        layer.bindPopup(feature.properties.name)
-                    }
-                },
-                pointToLayer: function (feature, latlng) {
-                    return L.marker(latlng, {
-                        icon: feature.properties.id
-                    })
-                }
-            })
-            map.addLayer(layerGeo)
-            return layerGeo
-        }
-
-        function layerGeoMetro (map, rc) {
-            var layerGeo = L.geoJson(window.geoInfoMetro, {
+            var layerGeo = L.geoJson(coords, {
                 // correctly map the geojson coordinates on the image
                 coordsToLatLng: function (coords) {
                     return rc.unproject(coords)
@@ -122,8 +96,8 @@ load_geojson("Streets", "./geojson/streets.json", "street", "blue", 0);*/
         L.control.layers({}, {
             'Bounds': layerBounds(map, rc, img),
             'Info': layerGeo(map, rc),
-            'Homes': layerGeoHomes(map, rc),
-            'Metro': layerGeoMetro (map, rc),
+            'Homes': layerGeoGlobal(window.geoInfoHomes, map, rc),
+            'Metro': layerGeoGlobal(window.geoInfoMetro, map, rc),
         }).addTo(map)
 
         L.tileLayer('./tiles/{z}/{x}/{y}.png', {
