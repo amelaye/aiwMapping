@@ -1,4 +1,4 @@
 .idea/
 /gdal2tiles-leaflet/
-/tiles/*
-!/tiles/.gitkeep
+/tiles/*/*/*.png
+/tiles/*.xml
