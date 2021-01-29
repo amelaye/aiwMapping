@@ -14,4 +14,4 @@ Hi ! This is my customizable mapping for Minetest.
 
 4. Change your map size in js/index.js
 5. Change the coords in the js/geojson files
-6. Execute yarn
+6. Install (eventually) and execute yarn
