@@ -5,6 +5,45 @@
         {
             'type': 'Feature',
             'properties': {
+                'name': 'Eglise',
+                'icon': 'fa-church',
+                'image': 't=1612715546&w=500&h=264&tok=009b79&media=screenshot_20210207_172749.png',
+                'description': ''
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8900,10488]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Mairie du village',
+                'icon': 'fa-landmark',
+                'image': 't=1612715310&w=500&h=264&tok=046bfd&media=screenshot_20210207_172357.png',
+                'description': ''
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8874,10523]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
+                'name': 'Banque',
+                'icon': 'fa-dollar-sign',
+                'image': 't=1612715188&w=500&h=264&tok=0a16cb&media=screenshot_20210207_172200.png',
+                'description': 'Retirez ou déposez de l\'argent sur votre compte ou échangez de l\'argent avec les autres joueurs.'
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [8880,10563]
+            }
+        },
+        {
+            'type': 'Feature',
+            'properties': {
                 'name': 'Forum',
                 'icon': 'fa-building',
                 'image': 't=1612711431&w=500&h=264&tok=87a10c&media=screenshot_20210207_161921.png',
