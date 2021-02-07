@@ -10,7 +10,7 @@
                 onEachFeature: function (feature, layer) {
                     if (feature.properties && feature.properties.name) {
                         let myDiv = '<h3><a href="'+feature.properties.link+'" target="blank_">'+feature.properties.name+'</a></h3>';
-                        myDiv += '<img src="'+feature.properties.image+'" style="max-width:300px;"/><br />';
+                        myDiv += '<img src="http://minetest.amelieonline.net/lib/exe/fetch.php?'+feature.properties.image+'" style="max-width:300px;"/><br />';
                         myDiv += feature.properties.description;
 
                         layer.bindPopup(myDiv)
