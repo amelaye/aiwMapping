@@ -99,7 +99,7 @@
                 'name': 'Minoterie',
                 'icon': 'fa-industry',
                 'image': 't=1612710919&w=500&h=264&tok=9f0817&media=screenshot_20210207_161050.png',
-                'description': ''
+                'description': 'Cultures automatisées et fabrication de farines.'
             },
             'geometry': {
                 'type': 'Point',
