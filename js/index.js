@@ -76,6 +76,7 @@
             'Bounds': layerBounds(map, rc, img),
             'Homes': layerGeoGlobal(window.geoInfoHomes, map, rc, 'violet', 'square', 'fa'),
             'Restaurants': layerGeoGlobal(window.geoInfoFood, map, rc, 'purple', 'square', 'fa'),
+            'Boutiques': layerGeoGlobal(window.geoInfoShops, map, rc, 'yellow', 'square', 'fa'),
             'Metro': layerGeoGlobal(window.geoInfoMetro, map, rc, 'blue', 'circle', 'fa'),
             'Train stations': layerGeoGlobal(window.geoInfoTrains, map, rc, 'cyan', 'square', 'fa'),
             'Misc': layerGeoGlobal(window.geoInfoMisc, map, rc, 'orange', 'square', 'fa'),

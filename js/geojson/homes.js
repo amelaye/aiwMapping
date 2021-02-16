@@ -47,7 +47,7 @@
             'properties': {
                 'name': 'Manoir',
                 'icon': 'fa-home',
-                'image': 't=1612710571&w=500&h=264&tok=5afb5a&media=screenshot_20200530_224200.png',
+                'image': 't=1612716655&w=500&h=264&tok=951d5f&media=screenshot_20210207_174618.png',
                 'description': ''
             },
             'geometry': {
