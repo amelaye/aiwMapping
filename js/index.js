@@ -9,8 +9,15 @@
                 // add a popup content to the marker
                 onEachFeature: function (feature, layer) {
                     if (feature.properties && feature.properties.name) {
-                        let myDiv = '<h3><a href="'+feature.properties.link+'" target="blank_">'+feature.properties.name+'</a></h3>';
-                        myDiv += '<img src="http://minetest.amelieonline.net/lib/exe/fetch.php?'+feature.properties.image+'" style="max-width:300px;"/><br />';
+                        let myDiv;
+                        if(feature.properties.link !== '') {
+                            myDiv = '<h3><a href="'+feature.properties.link+'" target="blank_">'+feature.properties.name+'</a></h3>';
+                        } else {
+                            myDiv = '<h3>'+feature.properties.name+'</h3>';
+                        }
+                        if(feature.properties.image !== '') {
+                            myDiv += '<img src="http://minetest.amelieonline.net/lib/exe/fetch.php?' + feature.properties.image + '" style="max-width:300px;"/><br />';
+                        }
                         myDiv += feature.properties.description;
 
                         layer.bindPopup(myDiv)
@@ -31,6 +38,18 @@
             })
             map.addLayer(layerGeo)
             return layerGeo
+        }
+
+        /**
+         * layer drawing a polygon
+         */
+        function layerPolygon (map, rc) {
+            var points = window.polygon.map(function (point) {
+                return rc.unproject([point.x, point.y])
+            })
+            var layerPolygon = L.polygon([points])
+            map.addLayer(layerPolygon)
+            return layerPolygon
         }
 
         function layerBounds (map, rc, img) {
@@ -74,7 +93,9 @@
             'Spawn': layerGeoGlobal(window.geoInfoSpawn, map, rc, 'red', 'star', 'fa'),
         }, {
             'Bounds': layerBounds(map, rc, img),
+            'Polygon': layerPolygon(map, rc),
             'Homes': layerGeoGlobal(window.geoInfoHomes, map, rc, 'violet', 'square', 'fa'),
+            'Villages': layerGeoGlobal(window.geoInfoVillages, map, rc, 'black', 'square', 'fa'),
             'Restaurants': layerGeoGlobal(window.geoInfoFood, map, rc, 'purple', 'square', 'fa'),
             'Boutiques': layerGeoGlobal(window.geoInfoShops, map, rc, 'yellow', 'square', 'fa'),
             'Metro': layerGeoGlobal(window.geoInfoMetro, map, rc, 'blue', 'circle', 'fa'),
