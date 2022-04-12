@@ -9,11 +9,13 @@
   <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
   <link rel="stylesheet" href="node_modules/leaflet-extra-markers/dist/css/leaflet.extra-markers.min.css">
   <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css">
+  <link rel="stylesheet" href="node_modules/leaflet-search/dist/leaflet-search.min.css">
 
   <script src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
   <script src="node_modules/leaflet/dist/leaflet.js"></script>
   <script src="node_modules/leaflet-extra-markers/dist/js/leaflet.extra-markers.min.js"></script>
   <script src="node_modules/leaflet-rastercoords/rastercoords.js"></script>
+  <script src="node_modules/leaflet-search/dist/leaflet-search.min.js"></script>
   <script src="js/geojson/spawn.js"></script>
   <script src="js/geojson/homes.js"></script>
   <script src="js/geojson/metro.js"></script>
@@ -37,6 +39,28 @@
   }
   .leaflet-popup {
     width:340px;
+  }
+  .search-tooltip {
+    width: 300px;
+  }
+  .search-input {
+    width: 250px;
+  }
+  .search-tip {
+    white-space: nowrap;
+  }
+  .search-tip b {
+    display: inline-block;
+    clear: left;
+    float: right;
+    padding: 0 4px;
+    margin-left: 4px;
+  }
+  .search-tip b {
+    color: #fff;
+  }
+  .Maison.search-tip b {
+    background: #BA55D3
   }
 </style>
 </head>

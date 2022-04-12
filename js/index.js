@@ -89,24 +89,68 @@
 
         var rc = new L.RasterCoords(map, img)
         map.setView(rc.unproject([9000, 10554]), 7)
+
+
+        // Définition des layers
+        var layerSpawn = layerGeoGlobal(window.geoInfoSpawn, map, rc, 'red', 'star', 'fa');
+        var layerHome = layerGeoGlobal(window.geoInfoHomes, map, rc, 'violet', 'square', 'fa');
+        var layerVillage = layerGeoGlobal(window.geoInfoVillages, map, rc, 'black', 'square', 'fa');
+        var layerRestaurant = layerGeoGlobal(window.geoInfoFood, map, rc, 'purple', 'square', 'fa');
+        var layerBoutique = layerGeoGlobal(window.geoInfoShops, map, rc, 'yellow', 'square', 'fa');
+        var layerMetro = layerGeoGlobal(window.geoInfoMetro, map, rc, 'blue', 'circle', 'fa');
+        var layerTrainStation = layerGeoGlobal(window.geoInfoTrains, map, rc, 'cyan', 'square', 'fa');
+        var layerMisc = layerGeoGlobal(window.geoInfoMisc, map, rc, 'orange', 'square', 'fa');
+
+
         L.control.layers({
-            'Spawn': layerGeoGlobal(window.geoInfoSpawn, map, rc, 'red', 'star', 'fa'),
+            'Spawn': layerSpawn,
         }, {
-            'Bounds': layerBounds(map, rc, img),
-            'Polygon': layerPolygon(map, rc),
-            'Homes': layerGeoGlobal(window.geoInfoHomes, map, rc, 'violet', 'square', 'fa'),
-            'Villages': layerGeoGlobal(window.geoInfoVillages, map, rc, 'black', 'square', 'fa'),
-            'Restaurants': layerGeoGlobal(window.geoInfoFood, map, rc, 'purple', 'square', 'fa'),
-            'Boutiques': layerGeoGlobal(window.geoInfoShops, map, rc, 'yellow', 'square', 'fa'),
-            'Metro': layerGeoGlobal(window.geoInfoMetro, map, rc, 'blue', 'circle', 'fa'),
-            'Train stations': layerGeoGlobal(window.geoInfoTrains, map, rc, 'cyan', 'square', 'fa'),
-            'Misc': layerGeoGlobal(window.geoInfoMisc, map, rc, 'orange', 'square', 'fa'),
+         //   'Bounds': layerBounds(map, rc, img),
+          //  'Polygon': layerPolygon(map, rc),
+            'Homes': layerHome,
+            'Villages': layerVillage,
+            'Restaurants': layerRestaurant,
+            'Boutiques': layerBoutique,
+            'Metro': layerMetro,
+            'Train stations': layerTrainStation,
+            'Misc': layerMisc,
         }).addTo(map)
 
         L.tileLayer('./tiles/{z}/{x}/{y}.png', {
             noWrap: true,
+           // bounds: rc.getMaxBounds(),
             attribution: 'Creation Amelie DUVERNET aka Amelaye <a href="http://minetest.amelieonline.net">Projet Amelaye In Minerland</a>'
         }).addTo(map)
+
+        // Moteur de recherche
+        var searchControl = new L.Control.Search({
+            layer: L.layerGroup([layerHome, layerVillage, layerRestaurant, layerBoutique, layerMetro, layerTrainStation, layerMisc]),
+            propertyName: 'name',
+            initial: false,
+            buildTip: function(text, val) {
+                var type = val.layer.feature.properties.type;
+                return '<a href="#" class="'+type+'">'+text+'<b>'+type+'</b></a>';
+            },
+        })
+        map.addControl(searchControl);
+
+        searchControl.on('search:locationfound', function(e) {
+            if(e.layer._popup)
+                e.layer.openPopup();
+        });
+
+        // Recherche par URL
+        let queryString = window.location.href;
+        let url = queryString.split('#');
+        if(url.length > 1) {
+            let params = url[1].split(',');
+            L.marker(rc.unproject([params[0], params[1]]))
+                .addTo(map)
+                .bindPopup(decodeURI(params[2]))
+                .openPopup()
+
+            map.setView(rc.unproject([params[0], params[1]]), 7);
+        }
     }
 
     init('map')
